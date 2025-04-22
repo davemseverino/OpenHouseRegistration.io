@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Weichert Registration</title>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style_v2.css" />
+</head>
+<body>
+  <header class="header">
+	  <div class="page-wrapper">
+  		<img src="Weichert-Hello-Yellow-Horizontal-Quote-342x82.png" alt="Hello Yellow Logo" class="logo-img" />
+  	</div>
+  
+</header>
+<div class="page-wrapper">
+  <main class="container">
+    <p class="address">123 Some Street</p>
+
+    <div class="intro">
+      <img src="3952150-1.jpg" alt="Property" class="property-image" />
+      <p class="description">
+        Welcome to Your Bright Next Move<br>
+Let’s connect you with everything — and everyone — you need to have a bright real estate experience.      </p>
+    </div>
+
+    <form id="registerForm" class="form" onsubmit="return validateForm()">
+      	<!-- Name -->
+<div class="form-row">
+  <label for="name">Name: <span class="required">*</span></label>
+  <input type="text" name="name" id="name" required />
+</div>
+<div class="error" id="nameError"></div>
+
+<!-- Cell -->
+<div class="form-row">
+  <label for="cell">Cell Phone: <span class="required">*</span></label>
+  <input type="tel" name="cell" id="cell" required 
+         pattern="^\d{3}-\d{3}-\d{4}$"
+         title="Enter a 10-digit phone number in the format 123-456-7890" />
+</div>
+
+<!-- Email -->
+<div class="form-row">
+  <label for="email">Email: <span class="required">*</span></label>
+  <input type="email" name="email" id="email" required />
+</div>
+
+
+       <p>Are you currently exclusively represented by a buyer’s agent with a signed agreement?</p>
+		<div class="buyer-options">
+		  <label><input type="radio" name="buyer" value="yes" /> Yes</label>
+		  <label><input type="radio" name="buyer" value="no" /> No</label>
+		</div>
+
+      <fieldset>
+  <legend>Current Address (Receive a Complimentary HomeValuation)</legend>
+
+  <!-- Street -->
+<div class="form-row">
+  <label for="street">Street:</label>
+  <input type="text" name="street" id="street" />
+</div>
+<div class="error" id="streetError"></div>
+
+<!-- City -->
+<div class="form-row">
+  <label for="city">City:</label>
+  <input type="text" name="city" id="city" />
+</div>
+<div class="error" id="cityError"></div>
+
+<!-- State -->
+<div class="form-row">
+  <label for="state">State:</label>
+  <select name="state" id="state"> 
+	  <option value="">Select</option>
+	  <option value="NY">Alabama</option>
+	  <option value="NJ">Alaska</option>
+	  <option value="PA">Arizona</option>
+	  <option value="VA">Arizona</option>
+
+  </select>
+</div>
+<div class="error" id="stateError"></div>
+
+<!-- Zip -->
+<div class="form-row">
+  <label for="zip">Zip:</label>
+  <input type="text" name="zip" id="zip" />
+</div>
+<div class="error" id="zipError"></div></fieldset>
+
+      <button type="submit" class="submit-btn">Let’s go! Hello Yellow</button>
+
+      <p class="note"><span class="required">*</span> Required</p>
+      <p class="disclaimer">Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+    </form>
+  </main>
+  </div>
+  <footer class="footer"></footer>
+
+  <script>
+    function validateForm() {
+      const form = document.getElementById('registerForm');
+      if (form.checkValidity()) {
+        window.location.href = "thankyou.html";
+        return false;
+      }
+      return true;
+    }
+  </script>
+  <script>
+  document.getElementById('cell').addEventListener('input', function (e) {
+    const x = e.target.value.replace(/\D/g, '').match(/(\d{0,3})(\d{0,3})(\d{0,4})/);
+    e.target.value = !x[2] ? x[1] : x[1] + '-' + x[2] + (x[3] ? '-' + x[3] : '');
+  });
+</script>
+
+<script>
+  function validateForm() {
+    // Clear previous errors
+    document.querySelectorAll('.error').forEach(el => el.textContent = '');
+
+    let isValid = true;
+
+    // Name validation
+    const name = document.getElementById('name').value.trim();
+    const nameWords = name.split(/\s+/);
+    if (nameWords.length < 2) {
+      document.getElementById('nameError').textContent = 'Please enter both a first and last name.';
+      isValid = false;
+    }
+
+    // Address validation (if street is populated)
+    const street = document.getElementById('street').value.trim();
+    const city = document.getElementById('city').value.trim();
+    const state = document.getElementById('state').value;
+    const zip = document.getElementById('zip').value.trim();
+
+    if (street !== '') {
+      const streetPattern = /^\d+\s+\w+/;
+      if (!streetPattern.test(street)) {
+        document.getElementById('streetError').textContent = 'Street must begin with a number and street name.';
+        isValid = false;
+      }
+
+      if (city === '') {
+        document.getElementById('cityError').textContent = 'Please enter a city.';
+        isValid = false;
+      }
+
+      if (state === '') {
+        document.getElementById('stateError').textContent = 'Please select a state.';
+        isValid = false;
+      }
+
+      const zipPattern = /^\d{5}$/;
+      if (!zipPattern.test(zip)) {
+        document.getElementById('zipError').textContent = 'Zip code must be 5 digits.';
+        isValid = false;
+      }
+    }
+
+    // If all validations pass, proceed
+    if (isValid && document.getElementById('registerForm').checkValidity()) {
+      window.location.href = "thankyou.html";
+      return false;
+    }
+
+    return false; // Prevent submission if not valid
+  }
+
+  // Phone auto-formatter
+  document.getElementById('cell').addEventListener('input', function (e) {
+    const cleaned = e.target.value.replace(/\D/g, '').slice(0, 10);
+    const match = cleaned.match(/^(\d{0,3})(\d{0,3})(\d{0,4})$/);
+    if (!match) return;
+    e.target.value = match[1] +
+      (match[2] ? '-' + match[2] : '') +
+      (match[3] ? '-' + match[3] : '');
+  });
+</script>
+</body>
+</html>

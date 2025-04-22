@@ -1,0 +1,202 @@
+/* General Styles */
+body {
+  margin: 0;
+  font-family: 'Open Sans', Arial, sans-serif;
+  background: #fff;
+  color: #000;
+}
+
+.header {
+  background: #000000;
+  padding: 0.1rem 0; /* smaller top and bottom padding */
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.logo-img {
+  height: 82px;
+  object-fit: contain;
+  display: block;
+  padding-left: 8px; /* 👈 adjust this value as needed */
+}
+
+
+.container {
+  padding: 1rem;
+}
+
+.page-wrapper {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0; /* 1rem;*/
+  
+}
+
+.address {
+  font-style: italic;
+  margin-bottom: 1rem;
+}
+
+.intro {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  align-items: flex-start; /* ensures top alignment */
+  flex-wrap: wrap; /* keeps layout flexible on small screens */
+}
+
+.property-image {
+  width: 100%;
+  max-width: 200px;
+  height: auto;
+  border: 1px solid #ccc;
+}
+
+.description {
+  flex: 1;
+  margin: 0; /* removes any default vertical spacing */
+  align-self: flex-start; /* ensures it aligns with the top of the flex container */
+}
+
+/* Remove this block completely OR update it like so: */
+.form label:not(.form-row label) {
+  display: block;
+  margin: 0.75rem 0 0.25rem;
+}
+
+input, select {
+  flex: 1;
+  max-width: 30ch;
+  padding: 0.5rem;
+  box-sizing: border-box;
+}
+
+fieldset {
+  border: none;
+  padding: 0;
+}
+
+legend {
+  font-weight: bold;
+  margin-top: 1rem;
+  margin-bottom: 1rem; /* ← this is the new padding below the text */
+}
+
+p {
+  margin-top: 0;
+}
+
+.required {
+  color: red;
+}
+
+.submit-btn {
+  background-color: #FFEA27;
+  color: black;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  margin: 1rem auto 0;
+  font-size: 1rem;
+  cursor: pointer;
+  display: block;
+}
+
+.note {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+}
+
+.disclaimer {
+  font-size: 0.8rem;
+  color: #555;
+  margin-top: 1rem;
+}
+
+.footer {
+  height: 30px;
+  background-color: #FFEA27;
+  margin-top: 2rem;
+}
+
+/* Keep buyer agreement inline */
+.form p {
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+}
+
+.form .buyer-options {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.form .buyer-options label {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  margin: 0;
+}
+.form-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+  max-width: 600px;
+}
+
+.form-row label {
+  width: 140px;             /* controls width of the label column */
+  text-align: right;        /* RIGHT ALIGN the label text */
+  margin-right: 1rem;       /* spacing between label and input */
+}
+
+.form-row input {
+  flex: 1;
+  max-width: 30ch;
+  padding: 0.5rem;
+  box-sizing: border-box;
+}
+.form-row select {
+  flex: 1;
+  max-width: 30ch;
+  padding: 0.5rem;
+  box-sizing: border-box;
+}
+.thank-you-wrapper {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 2rem 1rem;
+      text-align: center;
+    }
+
+    .thank-you-wrapper h1 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: #000;
+    }
+
+    .thank-you-wrapper p {
+      font-size: 1.1rem;
+      color: #333;
+      margin-bottom: 2rem;
+    }
+
+    .thank-you-wrapper .logo-img {
+      max-width: 180px;
+      margin-bottom: 2rem;
+    }
+
+    .thank-you-wrapper .btn-home {
+      background-color: #ffe93b;
+      color: black;
+      border: none;
+      padding: 0.75rem 1.5rem;
+      font-size: 1rem;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      border-radius: 4px;
+    }
